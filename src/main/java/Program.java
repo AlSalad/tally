@@ -1,9 +1,4 @@
-package code.challenge.tally;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**5 Friends (let's call them a, b, c, d and e) are playing a game and need to keep track of the scores. Each time
  * someone scores a point, the letter of his name is typed in lowercase. If someone loses a point, the letter of his
@@ -13,8 +8,7 @@ import java.util.List;
 public class Program {
 
     public static void main(String[] args) {
-        List<Score> finalScoreboard = extractScore("dbbaCEDbdAacCEAadcB");
-        sortScoreBoard(finalScoreboard);
+        List<Score> finalScoreboard = extractScore("EbAAdbBEaBaaBBdAccbeebaec");
         outScoreBoard(finalScoreboard);
     }
 
@@ -59,7 +53,7 @@ public class Program {
 
     private static void modifyScore(char playerChar, boolean lowerCase, List<Score> Scoreboard){
         char playerCharLowerCase = Character.toLowerCase(playerChar);
-        int currentPoints = 0;
+        int currentPoints;
 
         for (Score score : Scoreboard)
             if (score.getPlayer() == playerCharLowerCase){
@@ -67,10 +61,6 @@ public class Program {
                 int newPoints = lowerCase ? currentPoints + 1 : currentPoints - 1;
                 score.setPoints(newPoints);
             }
-    }
-
-    private static void sortScoreBoard(List<Score> Scoreboard){
-        //TODO
     }
 
     private static void outScoreBoard(List<Score> Scoreboard){
